@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Maneboy.js Weather Project</title>
+    <link rel="stylesheet" href="style.css">
+    <!--FONT AWESOME CDN LINK -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--LEAFLET CSS LINK-->
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+    <!--LEAFLET SCRIPT -->
+    <script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  defer
+></script>
+<script>
+    (function () {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        if (!mediaQuery.matches) {
+            document.documentElement.classList.remove('dark')
+        }
+        if (mediaQuery.matches) {
+            document.documentElement.classList.add('dark');
+        }
+
+    })()
+</script>
+
+</head>
+<body>
+<header>
+    <p class="logo">
+        <i class="fa-solid fa-cloud-sun fa-2x" ></i>
+</p>
+    <div class="search-bar">
+    <span class="icon-container">
+        <i class="fa-solid fa-location-dot" placeholder="Enter location" ></i>
+    </span>
+    <input class="input" type="text" placeholder="Enter location">
+    <button>
+        <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+</div>
+<button class="mode-toggle"><i class="fas fa-sun"></i></button>
+</header>
+<div class="overall-weather-container js-overall-weather-container">  
+</div>
+<section class="map-container">
+    <div id="map"></div>
+</section>
+<script type="module" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+body {
+    margin: auto;
+    padding: 0;
+    box-sizing: border-box;
+    background: hsl(0, 0%, 80%);
+    font-family: Verdana, Geneva, sans-serif;
+    max-width: 1200px;
+}
+.dark body {
+    background-color: hsl(0, 0%, 5%);
+    color: hsl(0, 0%, 100%);
+}
+header {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px;
+}
+header p > .fa-cloud-sun  {
+    color: hsl(42, 95%, 41%);
+    font-size: 40px;
+}
+.search-bar {
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
+    background: hsl(0, 0%, 99%);
+    border-radius: 15px;
+    height: 35px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 6px rgba(32,33,33,0.28);
+}
+.search-bar:focus-within{
+    box-shadow: 0 1px 6px rgba(32,33,36,0.35);
+}
+.dark .search-bar {
+    background-color: hsl(0, 0%, 16%);
+    border: 0.5px solid hsl(0, 0%, 100%);
+}
+
+.icon-container {
+    text-align: left;
+    margin-right: 5px;
+}
+.fa-location-dot {
+    font-size: 20px;
+    text-align: left;
+    color: hsl(0, 0%, 35%);
+}
+.dark .fa-location-dot {
+    color: hsl(0, 0%, 90%);
+}
+input[type=text] {
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.dark .input {
+    color: white;
+}
+button {
+    background: transparent;
+    font-size: 30px;
+    border: none;
+    width: 10%;
+    text-align: right;
+    cursor: pointer;
+    outline: none;
+}
+.dark button {
+    color: white;
+}
+.mode-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    padding: 20px;
+    border-radius: 40%;
+    text-align: center;
+    background-color: hsl(0, 0%, 99%);
+    box-shadow: 0 1px 6px rgba(32,33,33,0.28);
+    cursor: pointer;
+}
+.dark .mode-toggle {
+    background-color: hsl(0, 0%, 16%);
+}
+.fa-sun {
+    font-size: 30px;
+}
+.dark .fa-sun {
+    color: white;
+}
+
+.weather-section {
+    margin-top: 50px;
+    padding: 20px;
+}
+.weather {
+    position: relative;
+    background-color: hsl(0, 0%, 99%);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08)
+}
+.weather:hover {
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12) ;
+}
+.dark .weather {
+    background-color: hsl(0, 0%, 15%);
+    border: 0.5px solid hsl(0, 0%, 100%);
+}
+.weather-heading {
+    top: 1px;
+    background-color: hsl(0, 0%, 90%);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.dark .weather-heading {
+    background-color: hsl(0, 0%, 10%);
+}
+.weather-heading .state, .date {
+    font-weight: 600;
+    font-size: 20px;
+}
+.weather-main-contents {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+.degrees {
+    font-family: "Segoe UI", ahoma, Arial, sans-serif;
+    font-size: 35px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.description {
+    font-size: 20px;
+}
+.weather-icon {
+    color: hsl(215, 25%, 60%);
+    font-size: 60px;
+}
+.feels-like  {
+    margin-top: 50px;
+    padding: 20px;
+
+}
+.feels-like p {
+    font-size: 20px;
+}
+.feels-like .degrees {
+    font-family: "Segoe UI", ahoma, Arial, sans-serif;
+    font-size: 35px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+.values {
+    margin: 0 auto;
+    padding: 20px;
+}
+.values-and-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    column-gap: 5rem;
+    padding: 20px;
+    margin: auto;
+}
+.stats {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.stat, .value, .stats span i {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+.dark .stats span i {
+    color: white;
+}
+
+
+.stats .stat {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.stats .value {
+    white-space: nowrap;
+}
+.map-container {
+    padding: 20px;
+}
+#map {
+    width: 100%;
+    height: 300px;
+}
+.center-wrapper, .error-box {
+  position: fixed;   /* or absolute if inside another section */
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -10;
+}
+.error-box {
+    flex-direction: column;
+}
+.error-box .fas, .error-heading, .error-text {
+    text-align: center;
+}
+.error-box .fas {
+    font-size: 40px;
+}
+.dark .error-box .fas {
+    color: white;
+}
+.error-heading {
+    font-size: 25px;
+}
+.dark .error-heading {
+    color: white;
+}
+.error-text {
+    font-size: 20px;
+    color: hsl(0, 0%, 30%)
+}
+.dark .error-text {
+    color: hsl(0, 0%, 80%);
+}
+/* From Uiverse.io by adamgiebl */ 
+.loader {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: 25px 25px 75px rgba(0,0,0,0.55);
+  border: 1px solid #fac142;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.loader::before {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  background: transparent;
+  border: 1px dashed #fac142;
+  border-radius: 50%;
+  box-shadow: inset -5px -5px 25px rgba(0,0,0,0.25),
+  inset 5px 5px 35px rgba(0,0,0,0.25);
+}
+
+.loader::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px dashed #fac142;
+  box-shadow: inset -5px -5px 25px rgba(0,0,0,0.25),
+  inset 5px 5px 35px rgba(0,0,0,0.25);
+}
+
+.loader span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  background: transparent;
+  transform-origin: top left;
+  animation: radar82 2s linear infinite;
+  border-top: 1px dashed #fff;
+}
+
+.loader span::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fac142;
+  transform-origin: top left;
+  transform: rotate(-55deg);
+  filter: blur(30px) drop-shadow(20px 20px 20px #fac142);
+}
+
+@keyframes radar82 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width:1024px) {
+    .values-and-stats {
+        gap: 2rem;
+    }
+}
+@media (max-width: 912px) {
+    .values-and-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 640px) {
+    
+        .weather-heading .state, .weather-heading .date {
+            font-size: 15px
+        }
+        header p > .fa-cloud-sun {
+            font-size: 30px;
+        }
+        .mode-toggle {
+            width: 50px;
+            padding: 15px 10px;
+            
+        }
+    .search-bar {
+        width: 70%;
+        height: 30px;
+    }
+    button {
+        font-size: 20px;
+    }
+    
+    .stat, .value, .stats span i {
+        font-size: 15px;
+    }
+    .error-box .fas {
+        font-size: 30px;
+    }
+    .error-heading {
+        font-size: 20px;
+    }
+    .error-text {
+        font-size: 15px;
+    }
+}
+@media (max-width:540px ) {
+    .values-and-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    #map {
+        height: 400px;
+    }
+}
