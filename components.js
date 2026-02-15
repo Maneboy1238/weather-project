@@ -52,44 +52,44 @@ const formattedDate = `${day}, ${month}, ${time}`
     <div class="values-and-stats">
         <div class="stats">
             <span><i class="fa-solid fa-temperature-low"></i></span>
-            <p class="stat">Temp-min:</p>
+            
             <p class="value">${Math.round(data.tempMin)}°C</p>
         </div>
         <div class="stats">
             <span><i class="fa-solid fa-droplet"></i></span>
-            <p class="stat">Humidity:</p>
+            
             <p class="value">${data.humidity}%</p>
         </div>
         <div class="stats">
             <span>
                 <i class="fa-solid fa-temperature-high"></i>
             </span>
-            <p class="stat">Temp-max:</p>
-            <p class="value">${data.tempMax}°C</p>
+            
+            <p class="value">${Math.round(data.tempMax)}°C</p>
         </div>
         <div class="stats">
             <span><i class="fa-solid fa-gauge-high"></i></span>
-            <p class="stat">Pressure:</p>
+            
             <p class="value">${Math.round(data.pressure)}Pa</p>
         </div>
         <div class="stats">
             <span><i class="fa-solid fa-water"></i></span>
-            <p class="stat">Sea lvl:</p>
+            
             <p class="value">${Math.round(data.seaLvl)}Pa</p>
         </div>
         <div class="stats">
             <span><i class="fa-solid fa-mountain"></i></span>
-            <p class="stat">Ground lvl:</p>
+            
             <p class="value">${Math.round(data.grndLvl)}Pa</p>
         </div>
         <div class="stats">
             <span><i class="fa-solid fa-wind"></i></span>
-            <p class="stat">Wind speed:</p>
+            
             <p class="value">${data.windSpeed}m/s</p>
         </div>
         <div class="stats">
             <span><i class="fa-solid fa-location-dot"></i></span>
-            <p class="stat">lon/lat"</p>
+            
             <p class="value">${(data.lon).toFixed(2)}/${(data.lat).toFixed(2)}</p>
         </div>
     </div>

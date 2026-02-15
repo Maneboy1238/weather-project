@@ -2,12 +2,13 @@ body {
     margin: auto;
     padding: 0;
     box-sizing: border-box;
-    background: hsl(0, 0%, 80%);
+    background: linear-gradient(180deg, hsl(210, 100%, 98%), hsl(212, 100%, 90%));
     font-family: Verdana, Geneva, sans-serif;
+    min-height: 100vh;
     max-width: 1200px;
 }
 .dark body {
-    background-color: hsl(0, 0%, 5%);
+    background: linear-gradient(180deg, hsl(222, 47%, 11%), hsl(222, 47%, 4%));
     color: hsl(0, 0%, 100%);
 }
 header {
@@ -37,7 +38,7 @@ header p > .fa-cloud-sun  {
     box-shadow: 0 1px 6px rgba(32,33,36,0.35);
 }
 .dark .search-bar {
-    background-color: hsl(0, 0%, 16%);
+    background-color: hsl(222, 47%, 15% );
     border: 0.5px solid hsl(0, 0%, 100%);
 }
 
@@ -90,7 +91,7 @@ button {
     cursor: pointer;
 }
 .dark .mode-toggle {
-    background-color: hsl(0, 0%, 16%);
+    background-color: hsl(222, 47%, 15% );
 }
 .fa-sun {
     font-size: 30px;
@@ -105,7 +106,9 @@ button {
 }
 .weather {
     position: relative;
-    background-color: hsl(0, 0%, 99%);
+    background-color: hsla(0, 0%, 100%, 0.4);
+    border: 1px solid hsla(0, 0%, 100%, 0.8);
+    backdrop-filter: blur(12px);
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08)
@@ -114,19 +117,17 @@ button {
     box-shadow: 0 6px 16px rgba(0,0,0,0.12) ;
 }
 .dark .weather {
-    background-color: hsl(0, 0%, 15%);
-    border: 0.5px solid hsl(0, 0%, 100%);
+    background-color: hsla(222, 47%, 15%, 0.4);
+    border: 1px solid hsla(217, 10%, 60%, 0.1);
+    backdrop-filter: blur(20px);
 }
 .weather-heading {
     top: 1px;
-    background-color: hsl(0, 0%, 90%);
     display: flex;
     justify-content: space-between;
     padding: 10px;
 }
-.dark .weather-heading {
-    background-color: hsl(0, 0%, 10%);
-}
+
 .weather-heading .state, .date {
     font-weight: 600;
     font-size: 20px;
@@ -142,13 +143,29 @@ button {
     font-size: 35px;
     font-weight: 600;
     margin-bottom: 5px;
+    color: hsl(222, 47%, 15% );
+}
+.dark .degrees {
+    color: hsl(210, 40%, 98%);
 }
 .description {
     font-size: 20px;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    text-shadow: 0 0 10px hsla(190, 100%, 50%, 0.3);
+    color: hsl(212, 80%, 45%);
+}
+.dark .description {
+    color: hsl(190, 90%, 75%);
 }
 .weather-icon {
     color: hsl(215, 25%, 60%);
     font-size: 60px;
+    filter: drop-shadow(0 10px 15px hsla(212, 50%, 70%, 0.4))
+}
+.dark .weather-icon {
+    filter: drop-shadow(0 0 20px hsla(190, 100%, 60% , 0,25));
 }
 .feels-like  {
     margin-top: 50px;
@@ -157,12 +174,20 @@ button {
 }
 .feels-like p {
     font-size: 20px;
+    color: hsl(215, 16%, 47%);
+}
+.dark .feels-like p {
+    color: hsl(217, 10%, 66%);
 }
 .feels-like .degrees {
     font-family: "Segoe UI", ahoma, Arial, sans-serif;
     font-size: 35px;
     font-weight: 600;
     margin-top: 5px;
+    color: hsl(215, 47%, 15%)
+}
+.dark .feels-like .degrees {
+    color: hsl(210, 40%, 98%)
 }
 .values {
     margin: 0 auto;
@@ -172,21 +197,38 @@ button {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-content: center;
-    column-gap: 5rem;
+    gap: 5rem;
     padding: 20px;
     margin: auto;
 }
 .stats {
     display: flex;
+    justify-content: space-evenly;
     align-items: center;
+    padding: 10px;
     gap: 0.5rem;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    background: conic-gradient(from 0deg, hsl(212, 100%, 96%), hsl(212,100%, 85%), hsl(212, 100%, 95%));
+    box-shadow: inset 4px 4px 8px hsla(0, 0%, 100%, 0.8), inset -4px -4px 8px hsla(212, 50%, 80%, 0.3);
+    backdrop-filter: blur(8px);
+    border: 1px solid hsla(212, 100%, 100%, 0.5);
+
+}
+.dark .stats {
+    background: conic-gradient(from 180deg, hsla(212, 100%, 20%, 0.3), hsla(190, 100%, 40%, 0.2), hsla(212, 100%, 20%, 0.3));
+    box-shadow: inset 2px 2px 10px hsla(190, 100%, 70%, 0.1), inset -2px -2px 10px hsla(0, 0%, 0%, 0.4);
+    backdrop-filter: blur(15px);
+    border: 1px solid hsla(190%, 100%, 75%, 0.1);
 }
 .stat, .value, .stats span i {
     font-size: 20px;
     flex-shrink: 0;
 }
-.dark .stats span i {
-    color: white;
+.stats span i , .stats .value {
+    color: hsl(215, 16%, 25%)
+}
+.dark .stats span i,.dark .stats .value {
+    color: hsl(217, 10%, 80%);
 }
 
 
@@ -204,6 +246,8 @@ button {
 #map {
     width: 100%;
     height: 300px;
+    border: 10px solid hsla(0, 0%, 100%, 0.5);
+    border-radius: 25px;
 }
 .center-wrapper, .error-box {
   position: fixed;   /* or absolute if inside another section */
