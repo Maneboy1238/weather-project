@@ -347,7 +347,9 @@ button {
     button {
         font-size: 20px;
     }
-    
+    .values-and-stats {
+        gap: 20px;
+    }
     .stat, .value, .stats span i {
         font-size: 15px;
     }
