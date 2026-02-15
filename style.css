@@ -348,10 +348,14 @@ button {
         font-size: 20px;
     }
     .values-and-stats {
-        gap: 20px;
+        gap: 5px;
+        font-size: 10px;
     }
     .stat, .value, .stats span i {
         font-size: 15px;
+    }
+    .stats {
+        gap: 5px;
     }
     .error-box .fas {
         font-size: 30px;
