@@ -102,7 +102,10 @@ async function getWeatherDataUsingLatAndLon () {
   const weatherHTML = generateWeatherHTML(weatherInfo);
   weatherContainer.innerHTML = weatherHTML;
   document.querySelector('.weather-icon').style.color = `hsl(${match.color})`
-  mapContainer.style.visibility = 'visible'
+  mapContainer.style.visibility = 'visible';
+  setTimeout(()=> {
+    map.invalidateSize()
+  }, 200)
   main();
 } catch(error) {
   console.log(error)

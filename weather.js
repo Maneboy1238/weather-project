@@ -25,6 +25,7 @@ export async function fetchWeatherObjectUsingLocationName(location) {
     const data = await response.json();
     return data;
 } catch(error) {
+    if (error.message === '')
     return {
         error: 'network-error'
     }
