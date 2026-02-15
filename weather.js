@@ -11,7 +11,9 @@ export async function fetchWeatherObjectUsingLatAndLon(lat, lon) {
     const data = await response.json();
     return data;
     } catch (error) {
-        return
+        return {
+            error: 'network-error'
+        }
     }
 }
 
@@ -20,12 +22,11 @@ export async function fetchWeatherObjectUsingLocationName(location) {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`);
     if (!response.ok) {
         throw new Error('Failed to fetch weather data');
-        return ;
+         ;
     }
     const data = await response.json();
     return data;
 } catch(error) {
-    if (error.message === '')
     return {
         error: 'network-error'
     }

@@ -1,5 +1,5 @@
 import { darkMode, lightMode } from "./dark-light-mode-toggle.js";
-import { gettingUserCurrentLocation, updateMap } from "./location.js";
+import { gettingUserCurrentLocation, initMap, updateMap } from "./location.js";
 import { fetchWeatherObjectUsingLatAndLon, fetchWeatherObjectUsingLocationName, getWeatherIconAndColor, weatherIconRanges} from "./weather.js";
 import {generateWeatherHTML} from "./components.js"
 
@@ -14,20 +14,10 @@ if (document.documentElement.classList.contains('dark')) {
 }
 
 
-const L = window.L;
-
-// create map
-    const map = L.map("map").setView([51.505, -0.09], 13);
-
-// add tile layer (THIS WAS MISSING)
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
-
 
 async function getWeatherDataUsingLatAndLon () {
   const mapContainer = document.getElementById('map')
-  mapContainer.style.visibility = 'hidden';
+  
   const weatherContainer = document.querySelector('.js-overall-weather-container');
   weatherContainer.innerHTML = `
   <!-- From Uiverse.io by adamgiebl --> 
@@ -98,14 +88,13 @@ async function getWeatherDataUsingLatAndLon () {
     icon: match.icon,
     color: match.color
   }
-  updateMap(map, weather.coord.lat, weather.coord.lon, weather.name, coords.accuracy)
+  
   const weatherHTML = generateWeatherHTML(weatherInfo);
   weatherContainer.innerHTML = weatherHTML;
   document.querySelector('.weather-icon').style.color = `hsl(${match.color})`
-  mapContainer.style.visibility = 'visible';
-  setTimeout(()=> {
-    map.invalidateSize()
-  }, 200)
+  mapContainer.style.display = 'block';
+  const map = initMap();
+  updateMap(map, weather.coord.lat, weather.coord.lon, weather.name, coords.accuracy)
   main();
 } catch(error) {
   console.log(error)
@@ -113,8 +102,8 @@ async function getWeatherDataUsingLatAndLon () {
 }
 getWeatherDataUsingLatAndLon();
 async function getWeatherUsingLocationName() {
-  const mapContainer = document.getElementById('map')
-  mapContainer.style.visibility = 'hidden';
+  const mapContainer = document.getElementById('map');
+  mapContainer.style.display = 'none'
   const weatherContainer = document.querySelector('.js-overall-weather-container');
   weatherContainer.innerHTML = `
   <!-- From Uiverse.io by adamgiebl --> 
@@ -186,12 +175,14 @@ async function getWeatherUsingLocationName() {
     icon: match.icon,
     color: match.color
   }
-  updateMap(map, weather.coord.lat, weather.coord.lon, weather.name, 300)
+  
   const weatherHTML = generateWeatherHTML(weatherInfo);
   weatherContainer.innerHTML = weatherHTML;
   console.log(weather)
   document.querySelector('.weather-icon').style.color = `hsl(${match.color})`
-  mapContainer.style.visibility = 'visible'
+  mapContainer.style.display = 'block'
+  const map = initMap();
+  updateMap(map, weather.coord.lat, weather.coord.lon, weather.name, 300)
   main();
 } catch(error) {
 
