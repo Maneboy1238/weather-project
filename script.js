@@ -4,7 +4,7 @@ import { fetchWeatherObjectUsingLatAndLon, fetchWeatherObjectUsingLocationName, 
 import {generateWeatherHTML} from "./components.js"
 
 
-
+let map;
 const toggleBtn = document.querySelector('.mode-toggle');
 
 if (document.documentElement.classList.contains('dark')) {
@@ -93,15 +93,24 @@ async function getWeatherDataUsingLatAndLon () {
   weatherContainer.innerHTML = weatherHTML;
   document.querySelector('.weather-icon').style.color = `hsl(${match.color})`
   mapContainer.style.display = 'block';
-  const map = initMap();
+  
+  if (!map) map = initMap();
   updateMap(map, weather.coord.lat, weather.coord.lon, weather.name, coords.accuracy)
   main();
+  document.querySelector('.footer-text').style.display = 'block'
 } catch(error) {
   console.log(error)
 }
 }
+
+
+
 getWeatherDataUsingLatAndLon();
+
+
+
 async function getWeatherUsingLocationName() {
+  document.querySelector('.footer-text').style.display = 'none'
   const mapContainer = document.getElementById('map');
   mapContainer.style.display = 'none'
   const weatherContainer = document.querySelector('.js-overall-weather-container');
@@ -178,18 +187,26 @@ async function getWeatherUsingLocationName() {
   
   const weatherHTML = generateWeatherHTML(weatherInfo);
   weatherContainer.innerHTML = weatherHTML;
-  console.log(weather)
   document.querySelector('.weather-icon').style.color = `hsl(${match.color})`
   mapContainer.style.display = 'block'
-  const map = initMap();
+  if (!map) map = initMap();
   updateMap(map, weather.coord.lat, weather.coord.lon, weather.name, 300)
   main();
+  document.querySelector('.footer-text').style.display = 'block'
 } catch(error) {
 
 }
 }
 
-document.querySelector('button').addEventListener('click', getWeatherUsingLocationName)
+
+const input = document.querySelector('.input');
+input.addEventListener('keydown', (e)=> {
+  
+  if (e.key === 'Enter') getWeatherUsingLocationName();
+})
+const searchBtn = document.querySelector('button')
+
+searchBtn.addEventListener('click', getWeatherUsingLocationName)
 toggleBtn.addEventListener('click', ()=> {
   let isDark = document.documentElement.classList.contains('dark');
   if (isDark) {

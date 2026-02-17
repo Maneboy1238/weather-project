@@ -23,13 +23,15 @@ export function initMap() {
 
 // add tile layer (THIS WAS MISSING)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
+  maxZoom: 22,
+  maxNativeZoom: 19
+})
+.addTo(map);
 
 return map;
 }
 export function updateMap(mapInstance, lat,lon,name,accuracy) {
-    mapInstance.setView([lat, lon], 16);
+    mapInstance.setView([lat, lon], 13);
     if (marker) mapInstance.removeLayer(marker);
     if (circle)  mapInstance.removeLayer(circle);
     marker =  L.marker([lat, lon]).addTo(mapInstance)
