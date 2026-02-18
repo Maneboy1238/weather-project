@@ -13,7 +13,7 @@ if (document.documentElement.classList.contains('dark')) {
   toggleBtn.querySelector('i').className = 'fas fa-moon'
 }
 
-
+const mapLoader = document.querySelector('.map-loader');
 
 async function getWeatherDataUsingLatAndLon () {
   const mapContainer = document.getElementById('map')
@@ -94,7 +94,7 @@ async function getWeatherDataUsingLatAndLon () {
   document.querySelector('.weather-icon').style.color = `hsl(${match.color})`
   mapContainer.style.display = 'block';
   
-  if (!map) map = initMap();
+  if (!map) map = initMap(mapLoader);
   updateMap(map, weather.coord.lat, weather.coord.lon, weather.name, coords.accuracy)
   main();
   document.querySelector('.footer-text').style.display = 'block'
@@ -189,7 +189,7 @@ async function getWeatherUsingLocationName() {
   weatherContainer.innerHTML = weatherHTML;
   document.querySelector('.weather-icon').style.color = `hsl(${match.color})`
   mapContainer.style.display = 'block'
-  if (!map) map = initMap();
+  if (!map) map = initMap(mapLoader);
   updateMap(map, weather.coord.lat, weather.coord.lon, weather.name, 300)
   main();
   document.querySelector('.footer-text').style.display = 'block'

@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 body {
     margin: auto;
     padding: 0;
@@ -18,6 +21,15 @@ header {
     padding: 10px;
     top: 0;
     width: 100%;
+    background: radial-gradient(circle at 20% 30%, hwb(201 70% 0% / 0.6), transparent 60%), radial-gradient(circle at 80% 20%, hsla(210, 100%, 90%, 0.7), transparent 60%), conic-gradient(from 180deg at 50% 50%, hsla(210, 100%, 92%, 0.8),
+    hsla(200, 100%, 88%, 0.8),
+    hsla(200, 100%, 92%, 0.8)
+    )linear-gradient(180deg, hsl(210, 100%, 97%), hsl(212, 100%, 92%));
+    box-shadow: 0 10px 40px hsla(210, 100%, 70%, 0.5);
+    box-sizing: border-box;
+    backdrop-filter: blur(12px);
+}
+.dark header {
     background:
   radial-gradient(
     circle at top center,
@@ -29,7 +41,6 @@ header {
     hsl(222, 47%, 15%),
     hsl(222, 47%, 7%)
   );
-    box-sizing: border-box;
 }
 header p > .fa-cloud-sun  {
     color: hsl(42, 95%, 41%);
@@ -44,8 +55,8 @@ header p {
     width: 50%;
     background: hsl(0, 0%, 99%);
     border-radius: 15px;
-    height: 35px;
-    padding: 10px 15px;
+    height: 60px;
+    padding: 20px 15px;
     display: flex;
     align-items: center;
     box-shadow: 0 1px 6px rgba(32,33,33,0.28);
@@ -99,12 +110,14 @@ button {
     justify-content: center;
     align-items: center;
     width: 70px;
+    height: 60px;
     padding: 20px;
     border-radius: 40%;
     text-align: center;
     background-color: hsl(0, 0%, 99%);
     box-shadow: 0 1px 6px rgba(32,33,33,0.28);
     cursor: pointer;
+    margin-left: 10px;
 }
 .dark .mode-toggle {
     background-color: hsl(222, 47%, 15% );
@@ -261,16 +274,28 @@ button {
     white-space: nowrap;
 }
 .map-container {
-    padding: 10px;
+    position: relative;
+    isolation: isolate;
 }
 #map {
     margin: auto;
     display: none;
-    width: 90%;
-    height: 300px;
-    border: 10px solid hsla(0, 0%, 100%, 0.5);
-    border-radius: 25px;
-    padding: 15px;
+    width: 100%;
+    height: 500px;
+}
+.map-loader {
+    background-color: hsla(0, 0%, 100%, 0.9);
+    position: absolute;
+    display: none;
+    place-items: center;
+    inset: 0;
+    color: black;
+    font-size: 25px;
+    z-index: 1000;
+}
+.dark .map-loader {
+    background-color: hsla(222, 47%, 15%, 0.9);
+    color: white;
 }
 footer {
     display: flex;
@@ -401,6 +426,9 @@ footer {
     .values-and-stats {
         grid-template-columns: repeat(3, 1fr);
     }
+    .map-loader {
+        font-size: 15px;
+    }
 }
 @media (max-width: 640px) {
     
@@ -438,6 +466,9 @@ footer {
     }
     .stats {
         gap: 5px;
+    }
+    .map-loader {
+        font-size: 15px;
     }
     .footer-text {
         font-size: 10px;

@@ -15,19 +15,29 @@ export function gettingUserCurrentLocation () {
 }
 let marker;
 let circle;
-export function initMap() {
+export function initMap(mapLoader) {
     const L = window.L;
 
 // create map
     const map = L.map("map").setView([51.505, -0.09], 13);
 
 // add tile layer (THIS WAS MISSING)
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+const tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 22,
   maxNativeZoom: 19
 })
 .addTo(map);
+tileLayer.on('loading', ()=> {
+    mapLoader.style.display = 'grid'
+    mapLoader.style.opacity = 1;
+})
 
+tileLayer.on('load', ()=> {
+    mapLoader.style.opacity = 0;
+    setTimeout(()=> {
+    mapLoader.style.display = 'none';
+    }, 300)
+})
 return map;
 }
 export function updateMap(mapInstance, lat,lon,name,accuracy) {
