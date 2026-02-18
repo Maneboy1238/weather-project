@@ -441,8 +441,8 @@ footer {
         .mode-toggle {
             width: 40px;
             padding: 10px 10px;
-            
-            border-radius: 50%;
+            height: 50px;
+            border-radius: 40%;
             
         }
         .mode-toggle i {
@@ -450,7 +450,8 @@ footer {
         }
     .search-bar {
         width: 70%;
-        height: 25px;
+        padding: 10px 15px;
+        height: 50px;
     }
     input[type= text] {
         font-size: 15px;
